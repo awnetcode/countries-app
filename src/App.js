@@ -29,20 +29,20 @@ const fetchData = () => {
     : 'brak';
 
   return {
-    countryName: country.translations?.pol?.common || country.name.common,
-    countryNameOfficial: country.translations?.pol?.official || country.name.common,
-    nativeName: nativeCommon,
-    languages: country.languages,
-    population: country.population.toLocaleString(),
+    area: country.area.toLocaleString(),
     capital: country.capital,
-    flag: country.flags.svg,
-    flagAlt: country.flags.alt,
     coatOfArms: country.coatOfArms.svg,
     coatOfArmsAlt: 'Godło kraju',
     continent: country.continents,
-    area: country.area.toLocaleString(),
-    region: country.subregion,
+    countryName: country.translations?.pol?.common || country.name.common,
+    countryNameOfficial: country.translations?.pol?.official || country.name.common,
+    flag: country.flags.svg,
+    flagAlt: country.flags.alt,
     map: country.maps.googleMaps,
+    languages: country.languages,
+    nativeName: nativeCommon,
+    population: country.population.toLocaleString(),
+    region: country.subregion,
     //currency: country.currencies.name || 'brak',
   };
 });

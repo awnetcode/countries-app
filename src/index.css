@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Francois+One&family=Oswald:wght@200..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root{
-  --dark-shadow: 0 0 3px 3px 5px black;
-  --light-shadow: 0 0 3px 3px 5px silver;
+  --dark-shadow: 0 0 3px 3px  black;
+  --light-shadow: 0 0 3px 3px  silver;
   --rose-taupe: #86615C;
   --ghost-white: #F7F7FF;
   --moss-green: #828C51;
@@ -21,6 +21,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--moss-green);
+  font-family: 'Oswald', sans-serif;
 }
 
 
