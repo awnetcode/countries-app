@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-import Dashboard from './components/Dashboard';
 import SearchBar from './components/SearchBar';
+import Dashboard from './components/Dashboard';
+import Details from './components/Details';
 
 function App() {
 
  // const [searchTerm, setSearchTerm] = useState('');
   const [countriesArray, setCountriesArray] = useState([]);
-  const [fullCountryObject, setFullCountryObject] = useState({});
+
+  const [selectedCountry, setSelectedCountry] = useState({});
+  const [viewDetails, setViewDetails] = useState(false);
 
   const API_URL_ALL = 'https://restcountries.com/v3.1/all';
   //const API_URL_DETAILS = `https://restcountries.com/v3.1/all?fields=${searchTerm}`;
@@ -18,8 +21,6 @@ const fetchData = () => {
   fetch(API_URL_ALL)
     .then((response) => response.json())
     .then((countriesArrayAll) => {
-
-    setFullCountryObject(countriesArrayAll[0]);
 
   const countries = countriesArrayAll.map((country) => {
 
@@ -50,20 +51,37 @@ const fetchData = () => {
     });
 };
 
+  const viewCountryDetails = (index) =>{
+    setSelectedCountry(countriesArray[index]);
+    setViewDetails(true);
+  }
 
   useEffect(() =>{
     fetchData();
   },[])
 
   useEffect(() =>{
-    console.log(countriesArray);
-    console.log(fullCountryObject);
+  //  console.log(countriesArray);
   })
+
+  useEffect(()=>{
+    console.log(selectedCountry)
+  },[selectedCountry])
 
   return (
 <>
 <SearchBar />
-<Dashboard countriesArray={countriesArray}/>
+{viewDetails === false ? 
+<Dashboard 
+countriesArray={countriesArray}
+viewCountryDetails={viewCountryDetails}
+/> :
+<Details 
+selectedCountry={selectedCountry}
+viewDetails={viewDetails}
+setViewDetails={setViewDetails}
+/>
+}
 </>
   );
 }

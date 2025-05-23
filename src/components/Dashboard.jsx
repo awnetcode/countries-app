@@ -1,15 +1,13 @@
-import React from 'react'
 
 import './styles/dashboard.css';
 
-const Dashboard = ({countriesArray}) => {
-    countriesArray.map(() =>(
-        countriesArray.countryName
-    ))
+const Dashboard = ({countriesArray,viewCountryDetails}) => {
   return (
     <div className='dashboard-conntainer'>
       {countriesArray.map((item, index) =>(
-        <div className='dashboard-item' key={index}>
+        <div className='dashboard-item' 
+        key={index}
+        onClick={()=>viewCountryDetails(index)}>
           <div className="image-container" style={{ 
             backgroundImage: `url(${item.flag})`,
             backgroundSize:'cover',
