@@ -1,0 +1,19 @@
+.detail-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:48px;
+}
+
+.flag-container{
+    width: 400px;
+    height: 300px;
+    border-radius: 4px;
+    box-shadow: var(--dark-shadow);
+}
+
+.map{
+    cursor: pointer;
+}

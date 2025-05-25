@@ -78,7 +78,6 @@ viewCountryDetails={viewCountryDetails}
 /> :
 <Details 
 selectedCountry={selectedCountry}
-viewDetails={viewDetails}
 setViewDetails={setViewDetails}
 />
 }
