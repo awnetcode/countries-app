@@ -2,6 +2,8 @@
 import './styles/dashboard.css';
 
 const Dashboard = ({countriesArray,viewCountryDetails}) => {
+  console.log("countriesArray:", countriesArray);
+
   return (
     <div className='dashboard-conntainer'>
       {countriesArray.map((item, index) =>(

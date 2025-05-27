@@ -7,8 +7,10 @@ import Details from './components/Details';
 
 function App() {
 
- // const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [region, setRegion] = useState('');
   const [countriesArray, setCountriesArray] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   const [selectedCountry, setSelectedCountry] = useState({});
   const [viewDetails, setViewDetails] = useState(false);
@@ -48,32 +50,49 @@ const fetchData = () => {
   };
 });
       setCountriesArray(countries);
+      setFilteredCountries(countries);
     });
 };
 
+const filterCountries = () => {
+  const filteredCountriesArray = countriesArray.filter((country) => {
+    return(
+      country.countryName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (!region || (country.continent?.[0] && country.continent?.[0].toLowerCase() === region.toLowerCase()))
+    )
+  })
+  setFilteredCountries(filteredCountriesArray);
+}
+
   const viewCountryDetails = (index) =>{
-    setSelectedCountry(countriesArray[index]);
+    setSelectedCountry(filteredCountries[index]);
     setViewDetails(true);
   }
 
   useEffect(() =>{
     fetchData();
   },[])
-
+/*
   useEffect(() =>{
-  //  console.log(countriesArray);
-  })
+    filterCountries();
+  console.log(region);
+  console.log(searchTerm);
+  },[region, searchTerm])
 
   useEffect(()=>{
     console.log(selectedCountry)
   },[selectedCountry])
-
+*/
   return (
 <>
-<SearchBar />
+<SearchBar 
+setSearchTerm = {setSearchTerm}
+region = {region}
+setRegion = {setRegion}
+/>
 {viewDetails === false ? 
 <Dashboard 
-countriesArray={countriesArray}
+countriesArray={filteredCountries}
 viewCountryDetails={viewCountryDetails}
 /> :
 <Details 

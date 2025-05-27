@@ -27,8 +27,8 @@ const Details = ({selectedCountry, setViewDetails}) => {
       </div>
       <div className="details--column">
         <ul className="details-list">
-          <li className="detail">Powierzchnia: {}</li>
-          <li className="detail">Populacja: {}</li>
+          <li className="detail">Powierzchnia: {selectedCountry.area}</li>
+          <li className="detail">Populacja: {selectedCountry.population}</li>
           <li className="detail">{}</li>
           <li className="detail">{}</li>
           <li className="detail">{}</li>
